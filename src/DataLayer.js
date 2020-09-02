@@ -4,9 +4,12 @@ import React,{createContext, useContext,useReducer} from 'react'
 export const DataLayerContext = createContext();
 
 //Chidren means what we are wrapping(APP)
-export const DataLayer = ({initialState, reducer, children }) => {
+export const DataLayer = ({initialState, reducer, children }) => (
 
     <DataLayerContext.Provider value={useReducer(reducer, initialState)}>
         {children}
     </DataLayerContext.Provider>
-}
+    )
+
+
+export const useDataLayerValue = () => useContext(DataLayer)
