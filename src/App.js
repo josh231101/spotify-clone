@@ -12,17 +12,18 @@ function App() {
 
   useEffect(() => {
       const hash = getTokenFromUrl()
-      console.log("I HAVE A TOKE >>" , token)
+      console.log("I HAVE A TOKE >>" , hash)
       //We clean the URL for security
       window.location.hash = ""
 
       // _ is a standard
       const _token = hash.access_token
+      console.log(_token)
       if(_token){
         setToken(_token)
         //We pass the token to the API
         spotify.setAccessToken(_token)
-
+        //Then we can call the API to get all the info from the user
         spotify.getMe().then(user => {
           console.log(' :star: ',user);
         })  
